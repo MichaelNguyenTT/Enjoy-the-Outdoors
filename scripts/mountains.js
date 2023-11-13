@@ -10,7 +10,7 @@ window.onload = () => {
   const onMountainSelect = document.getElementById('mountain');
   onMountainSelect.onchange = () => {
     document.getElementById('mountains').innerHTML = ''
-    
+
   }
   loadMountainList();
 }
@@ -52,7 +52,7 @@ function displayMountainInfo() {
     Latitude: ${getMountain.coords.lat} Longitude: ${getMountain.coords.lng}</li>
   </ul>
 </div>`
-}
+};
 
 
 
