@@ -15,7 +15,7 @@
 <body>
     <header>
         <!-- Bootstrap Navbar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">Navbar</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,41 +31,55 @@
             </div>
           </nav>
     </header>
-
-    <main>
-        <div class="container m-5">
-            <select id="searchType" class="form-select">
-                <option value="">Search By:</option>
-                <option value="state">Location</option>
-                <option value="parkType">Park Type</option>
-            </select>
-        
-            <div id="stateSearch" class="search-section" style="display:none;">
-                <select id="states" class="form-select"></select>
-                <button id="locationBtn" class="btn btn-primary">Search by Location</button>
-            </div>
-        
-            <div id="parkTypeSearch" class="search-section" style="display:none;">
-                <select id="parktype" class="form-select"></select>
-                <button id="parktypeBtn" class="btn btn-primary">Search by Park Type</button>
-            </div>
+<!-- main content -->
+<main>
+<!-- container -->
+        <div class="banner">
+        <!-- Banner -->
+            <img src="/images/Park-Images/national-park-banner.jpeg" alt="National Park Banner">
             
-            <select id="nationalParks" class="form-select" style="display:none;"></select>
+            <!-- Centered content -->
+            <div class="centered-content">
+                <!-- dropdown menu for search type || locations or Park Type -->
+                <select id="searchType" class="form-select">
+                    <option value="">Search By:</option>
+                    <option value="locations">Location</option>
+                    <option value="parkType">Park Type</option>
+                </select>
+
+                <!-- dropdown for location -->
+                <div id="stateSearch" class="search-section" style="display:none;">
+                    <select id="states" class="form-select"></select>
+                    <button id="locationBtn" class="btn btn-primary">Search by Location</button>
+                </div>
+
+                <!-- dropdown for park type -->
+                <div id="parkTypeSearch" class="search-section" style="display:none;">
+                    <select id="parktype" class="form-select"></select>
+                    <button id="parktypeBtn" class="btn btn-primary">Search by Park Type</button>
+                </div>
+
+                <!-- dropdown to load national park names -->
+                <div class="search-section">
+                    <select id="nationalParks" class="form-select" style="display:none;"></select>
+                </div>
+            </div>
         </div>
-        <div class="container">
-            <div id="myParks" class="row g-2"></div>
+        <!-- output to display park in cards -->
+        <div class="container d-flex justify-content-center flex-wrap">
+            <div id="myParks" class="row justify-content-center flex-wrap"></div>
         </div>
-    </main>
+</main>
     
     <!-- footer -->
-    <footer class="bg-light text-white text-center text-lg-start">
+    <footer>
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
           © 2020 Copyright:
           <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
         </div>
         <!-- Copyright -->
-      </footer>
+    </footer>
 
     <script src="scripts/locationData.js"></script>
     <script src="scripts/parkTypeData.js"></script>

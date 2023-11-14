@@ -6,6 +6,7 @@ window.onload = () => {
     const clearParkList = document.getElementById('nationalParks')
     const searchType = document.getElementById('searchType');
 
+    // onchange event for search type
     searchType.onchange = () => {
         const displayLocations = document.getElementById('stateSearch');
         const displayParkType = document.getElementById('parkTypeSearch');
@@ -22,7 +23,8 @@ window.onload = () => {
         const preSelectParkType = document.getElementById('parktype');
         preSelectParkType.appendChild(new Option('Choose Park Type', ''))
 
-        if (searchType.value === 'state') {
+        // checks searchtype value to display location or park type dropdown 
+        if (searchType.value === 'locations') {
             displayLocations.style.display = 'block';
             displayNationalParks.style.display = 'block'
             addLocationsToDropdown();
@@ -33,7 +35,7 @@ window.onload = () => {
         }
     };
     
-    
+    // onchange event everytime user picks a new state
     const locationList = document.getElementById('states');
     locationList.onchange = () => {
         clearParkList.innerHTML = '';
@@ -42,7 +44,11 @@ window.onload = () => {
     }
     const locationBtn = document.getElementById('locationBtn');
     locationBtn.onclick = () => {
-        searchLocation();
+
+        if (locationBtn) {
+            locationBtn.scrollIntoView({ behavior: 'smooth'});
+            searchLocation();
+        }
     }
 
     
@@ -54,13 +60,17 @@ window.onload = () => {
     }
     const parktypeBtn = document.getElementById('parktypeBtn');
     parktypeBtn.onclick = () => {
+
+        if (parktypeBtn) {
+            parktypeBtn.scrollIntoView({ behavior: 'smooth'})
+        }
         searchByParkType();
     }
 
     //load nationalparks
     addNationalParkDropdown();
 };
-
+// ** functions to load dropdowns ** //
 function addLocationsToDropdown() {
     // Get the dropdown element by its ID
     const statesList = document.getElementById("states");
@@ -100,20 +110,26 @@ function addNationalParkDropdown() {
         nationalParkList.appendChild(optionParkNames);
     })
 }
+// ** END OF LOADING ** //
+
 
 function parksOnStateSelect() {
 
     const statesValue = document.getElementById('states').value;
+    // loops thru every element that includes to check if statesValue in object.State is true;
     const filteredParkData = nationalParksArray.filter((key) => key.State.includes(statesValue));
 
-    return filteredParkData;
+    return filteredParkData; // output: new array of objects that passed the condition
 }
 
+// function used to update available park names every time state changes
 function updateParksOnLocationSelect() {
     const stateSelectValue = document.getElementById('states').value;
     const nationalParksList = document.getElementById('nationalParks');
+    // grab the new parks array and store in variable to loop 
     const filteredParks = parksOnStateSelect();
 
+    // appends a new option of every locationName
     filteredParks.forEach((element) => {
         if (stateSelectValue === element.State) {
             let updatedOptions = new Option(element.LocationName, element.State)
@@ -142,6 +158,11 @@ function updateParksOnTypeSelect() {
     })
 };
 
+// function onclick event itll scroll to the content
+function scrollToDisplay() {
+
+}
+
 
 function searchByParkType() {
 
@@ -159,7 +180,7 @@ function searchByParkType() {
 function searchLocation() {
     const filteredParks = parksOnStateSelect();
     //* Displays when search By Location button is clicked:
-    let message = `<h1 class="text-center fs-5 mt-2">${filteredParks.length} National Park to visit</h1><br><br>`;
+    let message = `<h1 class="text-center fs-5 mt-5">${filteredParks.length} National Park to visit</h1><br><br>`;
   
     message += filteredParks.map(displayParks).join("");
   
@@ -168,13 +189,18 @@ function searchLocation() {
   
   function displayParks(park) {
     return `
-          <div class="card" style="width: 18rem; margin: 5px;">
-          <img src="${park.Image}" class="card-img-top" alt="...">
-          <div class="card-body">
-              <h5 class="card-title">${park.LocationName}</h5>
-              <p class="card-text">${park.State}</p>
-          </div>
-          </div>
-          `;
-  }
+        <div class="card border shadow" style="width: 18rem; margin: 5px;">
+        <img src="${park.Image}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title"><strong>${park.LocationName}</strong></h5>
+        <p class="card-text">${park.Address}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>City:</strong>${park.City}</li>
+        <li class="list-group-item"><strong>State:</strong>${park.State}</li>
+        <li class="list-group-item"><strong>Phone:</strong>${park.Phone}</li>
+        </ul>
+    </div>
+`;
+}
   
