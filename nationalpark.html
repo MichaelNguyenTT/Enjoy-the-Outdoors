@@ -33,88 +33,32 @@
     </header>
 
     <main>
-        <select id="states"></select>
-        <select id="parktype"></select>
-        <select id="nationalParks"></select>
-
-        <input type="text" name="searchLocation" id="inputLocation">
-        <button type="button" id="locationBtn">Search by location</button>
-        <button type="button" id="parktypeBtn">Search by Park Type</button>
-        <br>
-        <br>
-
-
-        <div id="myParks">
-
+        <select id="searchType">
+            <option value="">Search By:</option>
+            <option value="state">Location</option>
+            <option value="parkType">Park Type</option>
+        </select>
+    
+        <div id="stateSearch" class="search-section" style="display:none;">
+            <select id="states"></select>
+            <button id="locationBtn">Search by Location</button>
         </div>
+    
+        <div id="parkTypeSearch" class="search-section" style="display:none;">
+            <select id="parktype"></select>
+            <button id="parktypeBtn">Search by Park Type</button>
+        </div>
+        
+        <select id="nationalParks" style="display:none;"></select>
 
-
+        <div class="container d-flex align-items-center justify-content-center">
+            <div id="myParks">
+            </div>
+        </div>
     </main>
     
     <!-- footer -->
-    <footer class="bg-dark text-white text-center text-lg-start">
-        <!-- Grid container -->
-        <div class="container p-4">
-          <!--Grid row-->
-          <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Footer Content</h5>
-      
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-                molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-                voluptatem veniam, est atque cumque eum delectus sint!
-              </p>
-            </div>
-            <!--Grid column-->
-      
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
-      
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#!" class="text-white">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 4</a>
-                </li>
-              </ul>
-            </div>
-            <!--Grid column-->
-      
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase mb-0">Links</h5>
-      
-              <ul class="list-unstyled">
-                <li>
-                  <a href="#!" class="text-white">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 4</a>
-                </li>
-              </ul>
-            </div>
-            <!--Grid column-->
-          </div>
-          <!--Grid row-->
-        </div>
-        <!-- Grid container -->
-      
+    <footer class="bg-light text-white text-center text-lg-start">
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
           © 2020 Copyright:
@@ -122,7 +66,7 @@
         </div>
         <!-- Copyright -->
       </footer>
-      
+
     <script src="scripts/locationData.js"></script>
     <script src="scripts/parkTypeData.js"></script>
     <script src="scripts/nationalParkData.js"></script>
@@ -132,5 +76,4 @@
     </script>
 
 </body>
-
 </html>

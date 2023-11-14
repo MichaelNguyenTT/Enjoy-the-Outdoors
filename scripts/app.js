@@ -1,15 +1,42 @@
 "use strict";
 
 window.onload = () => {
-    //Initialize the functions
-    updateParksOnLocationSelect();
+    //input variables
+    const clearDisplay = document.getElementById('myParks');
+    const clearParkList = document.getElementById('nationalParks')
+    const searchType = document.getElementById('searchType');
+
+    searchType.onchange = () => {
+        const displayLocations = document.getElementById('stateSearch');
+        const displayParkType = document.getElementById('parkTypeSearch');
+        const displayNationalParks = document.getElementById('nationalParks');
+        displayLocations.style.display = 'none';
+        displayParkType.style.display = 'none';
+        
+        clearDisplay.innerHTML = '';
+        
+        const preSelectLocation = document.getElementById('states');
+        preSelectLocation.appendChild(new Option('Choose A Location', ''))
+    
+        const preSelectParkType = document.getElementById('parktype');
+        preSelectParkType.appendChild(new Option('Choose Park Type', ''))
+
+        if (searchType.value === 'state') {
+            displayLocations.style.display = 'block';
+            displayNationalParks.style.display = 'block'
+            addLocationsToDropdown();
+        } else if (searchType.value === 'parkType') {
+            displayParkType.style.display = 'block'
+            displayNationalParks.style.display = 'block'
+            addParkTypesDropdown();
+        }
+    };
+    
+    
     const locationList = document.getElementById('states');
     locationList.onchange = () => {
-        const clearDisplay = document.getElementById('myParks');
+        clearParkList.innerHTML = '';
         clearDisplay.innerHTML = '';
-
-        const clearParksList = document.getElementById('nationalParks');
-        clearParksList.innerHTML = '';
         updateParksOnLocationSelect();
     }
     const locationBtn = document.getElementById('locationBtn');
@@ -17,25 +44,20 @@ window.onload = () => {
         searchLocation();
     }
 
-
+    
+    const parktypeList = document.getElementById('parktype')
+    parktypeList.onchange = () => {
+        clearParkList.innerHTML = '';
+        clearDisplay.innerHTML = '';
+        updateParksOnTypeSelect();
+    }
     const parktypeBtn = document.getElementById('parktypeBtn');
     parktypeBtn.onclick = () => {
         searchByParkType();
     }
-    const parktypeList = document.getElementById('parktype')
-    parktypeList.onchange = () => {
-        const clearDisplay = document.getElementById('myParks');
-        clearDisplay.innerHTML = '';
 
-        const clearParksList = document.getElementById('nationalParks');
-        clearParksList.innerHTML = '';
-        updateParksOnTypeSelect();
-    }
-    
-    // Load the dropdowns
-    addLocationsToDropdown();
-    addParkTypesDropdown();
-
+    //load nationalparks
+    addNationalParkDropdown();
 };
 
 function addLocationsToDropdown() {
@@ -58,8 +80,6 @@ function addLocationsToDropdown() {
 
 function addParkTypesDropdown() {
     const parkTypesList = document.getElementById('parktype');
-    parkTypesList.appendChild(new Option('Search for a Park Type', ''))
-
     parkTypesArray.forEach((parkType) => {
 
         let optionParkTypes = new Option(parkType, parkType)
@@ -71,7 +91,6 @@ function addParkTypesDropdown() {
 function addNationalParkDropdown() {
 
     const nationalParkList = document.getElementById('nationalParks');
-    nationalParkList.appendChild(new Option('Search for a National Park'))
 
     nationalParksArray.forEach(function (element) {
 
@@ -93,13 +112,15 @@ function parksOnStateSelect() {
 }
 
 function updateParksOnLocationSelect() {
-
+    const stateSelectValue = document.getElementById('states').value;
     const nationalParksList = document.getElementById('nationalParks');
     const filteredParks = parksOnStateSelect();
 
     filteredParks.forEach((element) => {
-        let updatedOptions = new Option(element.LocationName, element.State)
-        nationalParksList.appendChild(updatedOptions);
+        if (stateSelectValue === element.State) {
+            let updatedOptions = new Option(element.LocationName, element.State)
+            nationalParksList.appendChild(updatedOptions);
+        }
     })
 }
 
@@ -117,34 +138,28 @@ function getParkNamesByType() {
 
 
 function updateParksOnTypeSelect() {
-    const statesValue = document.getElementById('states').value;
     const nationalParksList = document.getElementById('nationalParks');
     const parktypeNames = getParkNamesByType();
 
     parktypeNames.forEach((element) => {
-        if (statesValue === element.State) {
-            let parkNameOptions = new Option(element.LocationName, element.State)
-            nationalParksList.appendChild(parkNameOptions)
-        } else {
-            console.log('not found');
-        }
+
+        let parkNameOptions = new Option(element.LocationName, element.State)
+        nationalParksList.appendChild(parkNameOptions)
     })
-}
+};
+
 
 function searchByParkType() {
-    const statesValue = document.getElementById('states').value;
+
     const filteredParks = getParkNamesByType();
 
-    filteredParks.forEach((item) => {
-        if (statesValue === item.State) {
-            //* Displays when search By Location button is clicked:
-            let message = `${filteredParks.length} National Park to visit</h1><br><br>`;
-          
-            message += filteredParks.map(displayParks).join("");
-          
-            document.getElementById("myParks").innerHTML = message;
-        } 
-    })
+    //* Displays when search By Location button is clicked:
+    let message = `${filteredParks.length} National Park to visit</h1><br><br>`;
+    
+    message += filteredParks.map(displayParks).join("");
+    
+    document.getElementById("myParks").innerHTML = message;
+
 }
 
 function searchLocation() {
@@ -159,13 +174,13 @@ function searchLocation() {
   
   function displayParks(park) {
     return `
-          <div class="card" style="width: 18rem;">
+          <div class="card" style="width: 18rem; margin: 10px;">
           <img src="${park.Image}" class="card-img-top" alt="...">
           <div class="card-body">
               <h5 class="card-title">${park.LocationName}</h5>
               <p class="card-text">${park.State}.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
-          </div>`;
+          </div>
+          `;
   }
   
