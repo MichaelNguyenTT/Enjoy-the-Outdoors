@@ -32,6 +32,9 @@ body {
     margin-top: 10px;
 }
 
-.btn {
-    margin-top: 10px;
+.homepageContent {
+    background-image: url("/images/homepage/mountain2.jpg");
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
 }
