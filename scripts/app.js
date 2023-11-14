@@ -10,6 +10,7 @@ window.onload = () => {
         const displayLocations = document.getElementById('stateSearch');
         const displayParkType = document.getElementById('parkTypeSearch');
         const displayNationalParks = document.getElementById('nationalParks');
+
         displayLocations.style.display = 'none';
         displayParkType.style.display = 'none';
         
@@ -100,9 +101,6 @@ function addNationalParkDropdown() {
     })
 }
 
-//TODO function => get the users value from states and use filter method to output 
-//TODO the national parks that contain the value 
-
 function parksOnStateSelect() {
 
     const statesValue = document.getElementById('states').value;
@@ -123,10 +121,6 @@ function updateParksOnLocationSelect() {
         }
     })
 }
-
-
-//TODO function => get user park type value to loop thru all nationParksArray.locationName
-//TODO using case strings and have it display the parks
 
 function getParkNamesByType() {
     const parktypeValue = document.getElementById('parktype').value;
@@ -165,7 +159,7 @@ function searchByParkType() {
 function searchLocation() {
     const filteredParks = parksOnStateSelect();
     //* Displays when search By Location button is clicked:
-    let message = `${filteredParks.length} National Park to visit</h1><br><br>`;
+    let message = `<h1 class="text-center fs-5 mt-2">${filteredParks.length} National Park to visit</h1><br><br>`;
   
     message += filteredParks.map(displayParks).join("");
   
@@ -174,11 +168,11 @@ function searchLocation() {
   
   function displayParks(park) {
     return `
-          <div class="card" style="width: 18rem; margin: 10px;">
+          <div class="card" style="width: 18rem; margin: 5px;">
           <img src="${park.Image}" class="card-img-top" alt="...">
           <div class="card-body">
               <h5 class="card-title">${park.LocationName}</h5>
-              <p class="card-text">${park.State}.</p>
+              <p class="card-text">${park.State}</p>
           </div>
           </div>
           `;

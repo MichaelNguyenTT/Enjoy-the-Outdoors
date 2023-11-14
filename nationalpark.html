@@ -33,27 +33,27 @@
     </header>
 
     <main>
-        <select id="searchType">
-            <option value="">Search By:</option>
-            <option value="state">Location</option>
-            <option value="parkType">Park Type</option>
-        </select>
-    
-        <div id="stateSearch" class="search-section" style="display:none;">
-            <select id="states"></select>
-            <button id="locationBtn">Search by Location</button>
-        </div>
-    
-        <div id="parkTypeSearch" class="search-section" style="display:none;">
-            <select id="parktype"></select>
-            <button id="parktypeBtn">Search by Park Type</button>
-        </div>
+        <div class="container m-5">
+            <select id="searchType" class="form-select">
+                <option value="">Search By:</option>
+                <option value="state">Location</option>
+                <option value="parkType">Park Type</option>
+            </select>
         
-        <select id="nationalParks" style="display:none;"></select>
-
-        <div class="container d-flex align-items-center justify-content-center">
-            <div id="myParks">
+            <div id="stateSearch" class="search-section" style="display:none;">
+                <select id="states" class="form-select"></select>
+                <button id="locationBtn" class="btn btn-primary">Search by Location</button>
             </div>
+        
+            <div id="parkTypeSearch" class="search-section" style="display:none;">
+                <select id="parktype" class="form-select"></select>
+                <button id="parktypeBtn" class="btn btn-primary">Search by Park Type</button>
+            </div>
+            
+            <select id="nationalParks" class="form-select" style="display:none;"></select>
+        </div>
+        <div class="container">
+            <div id="myParks" class="row g-2"></div>
         </div>
     </main>
     
