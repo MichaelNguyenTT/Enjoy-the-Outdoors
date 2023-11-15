@@ -17,15 +17,17 @@
         <!-- Bootstrap Navbar -->
         <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
+              <a class="navbar-brand" href="#">
+                <img src="/images/icon/navbar-icon-removebg-preview.png">
+              </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                   <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
-                  <a class="nav-link" href="/mountains.html">National Parks</a>
-                  <a class="nav-link" href="/nationalpark.html">Mountains</a>
+                  <a class="nav-link" href="/nationalpark.html">National Parks</a>
+                  <a class="nav-link" href="/mountains.html">Mountains</a>
                 </div>
               </div>
             </div>
@@ -50,13 +52,13 @@
                 <!-- dropdown for location -->
                 <div id="stateSearch" class="search-section" style="display:none;">
                     <select id="states" class="form-select"></select>
-                    <button id="locationBtn" class="btn btn-primary">Search by Location</button>
+                    <button id="locationBtn" class="btn ">Search by Location</button>
                 </div>
 
                 <!-- dropdown for park type -->
                 <div id="parkTypeSearch" class="search-section" style="display:none;">
                     <select id="parktype" class="form-select"></select>
-                    <button id="parktypeBtn" class="btn btn-primary">Search by Park Type</button>
+                    <button id="parktypeBtn" class="btn ">Search by Park Type</button>
                 </div>
 
                 <!-- dropdown to load national park names -->
@@ -70,16 +72,15 @@
             <div id="myParks" class="row justify-content-center flex-wrap"></div>
         </div>
 </main>
-    
+        <footer>
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+              © 2023 Copyright:
+              <a class="text-white" href="https://github.com/MichaelNguyenTT">Michael Nguyen</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
     <!-- footer -->
-    <footer>
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-          © 2020 Copyright:
-          <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
 
     <script src="scripts/locationData.js"></script>
     <script src="scripts/parkTypeData.js"></script>

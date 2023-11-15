@@ -17,6 +17,7 @@ window.onload = () => {
   viewAllBtn.onclick = () => {
     displayAllMountains();
   }
+
     loadMountainList();
 }
 
@@ -34,6 +35,7 @@ function getMountainInfo() {
 
   const mountainSelect = document.getElementById('mountain').value;
   const findMountain = mountainsArray.find((item) => item.name.includes(mountainSelect));
+
   return findMountain;
 };
 

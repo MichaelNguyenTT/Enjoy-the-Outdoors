@@ -68,7 +68,7 @@ h1 {
 #displayAllMountains {
     display: flex;
     justify-content: space-evenly;
-    max-height: 800px;
+    max-height: 800px; 
     overflow-y: auto;
     background-color: white;
     margin-top: 5px;

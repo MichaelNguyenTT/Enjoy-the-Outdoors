@@ -174,7 +174,7 @@ function searchByParkType() {
 function searchLocation() {
     const filteredParks = parksOnStateSelect();
     //* Displays when search By Location button is clicked:
-    let message = `<h1 class="text-center fs-5 mt-5">${filteredParks.length} National Park to visit</h1><br><br>`;
+    let message = `<h1 class="text-center mt-2" style="font-size: 1rem"><strong><em>${filteredParks.length} National Park to visit...</em></strong></h1><span><hr></span><br><br>`;
   
     message += filteredParks.map(displayParks).join("");
   
@@ -183,18 +183,17 @@ function searchLocation() {
   
   function displayParks(park) {
     return `
-        <div class="card border shadow" style="width: 18rem; margin: 5px;">
-        <img src="${park.Image}" class="card-img-top" alt="...">
+        <div class="card border shadow" style="width: 18rem; margin: 15px;">
         <div class="card-body">
-        <h5 class="card-title"><strong>${park.LocationName}</strong></h5>
-        <p class="card-text">${park.Address}</p>
+        <h5 class="card-title"><strong> ${park.LocationName}</strong></h5>
+        <p class="card-text"> ${park.Address}</p>
         </div>
         <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>City:</strong>${park.City}</li>
-        <li class="list-group-item"><strong>State:</strong>${park.State}</li>
-        <li class="list-group-item"><strong>Phone:</strong>${park.Phone}</li>
+        <li class="list-group-item"><strong>City:</strong> ${park.City}</li>
+        <li class="list-group-item"><strong>State:</strong> ${park.State}</li>
+        <li class="list-group-item"><strong>Phone:</strong> ${park.Phone}</li>
         </ul>
     </div>
 `;
+
 }
-  
