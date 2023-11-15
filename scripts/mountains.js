@@ -2,6 +2,7 @@
 
 window.onload = () => {
 
+  displayMountainInfo();
   const displayBtn = document.getElementById('displayMountainsBtn');
   displayBtn.onclick = () => {
     displayMountainInfo();
@@ -9,11 +10,16 @@ window.onload = () => {
 
   const onMountainSelect = document.getElementById('mountain');
   onMountainSelect.onchange = () => {
-    document.getElementById('mountains').innerHTML = ''
-
+    displayMountainInfo();
   }
-  loadMountainList();
+
+  const viewAllBtn = document.getElementById('viewAllMountains');
+  viewAllBtn.onclick = () => {
+    displayAllMountains();
+  }
+    loadMountainList();
 }
+
 
 function loadMountainList() {
   const mountainSelect = document.getElementById('mountain');
@@ -28,62 +34,59 @@ function getMountainInfo() {
 
   const mountainSelect = document.getElementById('mountain').value;
   const findMountain = mountainsArray.find((item) => item.name.includes(mountainSelect));
-
   return findMountain;
-  
 };
+
+function displayAllMountains() {
+  let displayMountains = ''
+
+  mountainsArray.forEach((mountain) => {
+    
+    displayMountains += `
+    <div class="card" style="width: 15rem; margin: 15px;">
+    <img src="/images/${mountain.img}" class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title">${mountain.name}</h5>
+    <p class="card-text">${mountain.desc}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>Elevation:</strong> ${mountain.elevation}</li>
+    <li class="list-group-item"><strong>Effort:</strong> <em>${mountain.effort}</em></li>
+    <li class="list-group-item">
+    Latitude: ${mountain.coords.lat} Longitude: ${mountain.coords.lng}</li>
+    </ul>
+    </div>`
+  })
+
+  const mountainCards = document.getElementById('displayAllMountains');
+  mountainCards.innerHTML = displayMountains;
+}
 
 
 function displayMountainInfo() {
 
   const getMountain = getMountainInfo();
 
-  document.getElementById('mountains').innerHTML = `
-  <div class="card" style="width: 18rem;">
-  <img src="/images/${getMountain.img}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${getMountain.name}</h5>
-    <p class="card-text">${getMountain.desc}</p>
+  document.getElementById('mountains').innerHTML =
+  `
+  <div class="modal fade" id="mountainModal" tabindex="-1" aria-labelledby="mountainModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <img src="/images/${getMountain.img}" class="card-img-top" alt="...">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="mountainModalLabel">${getMountain.name}</h1>
+      </div>
+      <div class="modal-body">
+        <p>${getMountain.desc}</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Elevation:</strong> ${getMountain.elevation}</li>
+          <li class="list-group-item"><strong>Effort:</strong> <em>${getMountain.effort}</em></li>
+          <li class="list-group-item">
+          Latitude: ${getMountain.coords.lat} Longitude: ${getMountain.coords.lng}</li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Elevation: ${getMountain.elevation}</li>
-    <li class="list-group-item">Effort: ${getMountain.effort}</li>
-    <li class="list-group-item">Coordinates:\n 
-    Latitude: ${getMountain.coords.lat} Longitude: ${getMountain.coords.lng}</li>
-  </ul>
-</div>`
+</div>
+  `
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// async function getSunsetForMountain(lat, lng) {
-//   let response = await fetch(
-//     `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&date=today`
-//   );
-//   let data = await response.json();
-//   return data;
-// }
-
-// function loadData() {
-//   var down = document.getElementById("mountain");
-//   for (let i = 0; i < mountainsArray.length; i++) {
-//     var optn = mountainsArray[i];
-//     var el = document.createElement("option");
-//     el.textContent = optn;
-//     el.value = optn;
-//     down.appendChild(el);
-//   }
-//   down.innerHTML = "Elements Added";
-// }

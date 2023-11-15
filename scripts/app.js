@@ -158,12 +158,6 @@ function updateParksOnTypeSelect() {
     })
 };
 
-// function onclick event itll scroll to the content
-function scrollToDisplay() {
-
-}
-
-
 function searchByParkType() {
 
     const filteredParks = getParkNamesByType();
