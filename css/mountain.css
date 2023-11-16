@@ -2,7 +2,7 @@ body {
     padding: 0;
     margin: 0;
     background: rgb(86,86,86);
-    background: radial-gradient(circle, rgba(86,86,86,1) 0%, rgba(40,35,35,0.5886729691876751) 54%);
+    background: radial-gradient(circle, rgba(86,86,86,1) 0%, rgba(40,35,35,0) 100%);
 }
 
 main {
@@ -37,13 +37,12 @@ h1 {
     display: flex;
     justify-content: center;
     width: 100vw;
-    margin: 10px;
     position: absolute;
     top: 20%;
 }
 
 .allMountainsContainer div {
-    width: 25%;
+    width: 20%;
 }
 
 .mountainInfoContainer {
@@ -53,6 +52,7 @@ h1 {
     margin-left: 30px;
     width: 25vw;
     position: fixed;
+    z-index: 2;
 }
 
 #viewAllMountains {
@@ -75,8 +75,10 @@ h1 {
     max-height: 800px; 
     overflow-y: auto;
     background-color: white;
-    margin-top: 5px;
+    margin-top: -30px;
+    margin-left: 100px;
     margin-bottom: 20px;
+    z-index: 1;
 }
 
 .card {
@@ -85,12 +87,14 @@ h1 {
 
 .card img {
     margin-top: 5px;
+}
+.card {
     border-radius: 10px 10px 10px 10px;
     transition: 0.5s all ease-in-out;
 }
 
-.card:hover img {
-    transform: scale(1.2);
+.card:hover {
+    transform: scale(1.05);
 }
 .card-text {
     max-height: 150px;

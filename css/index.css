@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Droid serif', serif; 
 }
 
 body {
@@ -10,10 +11,16 @@ body {
     background: radial-gradient(circle, rgba(86,86,86,1) 0%, rgba(40,35,35,0) 100%);
 }
 
-h1 {
-    color: white;
-    font-size: 4rem;
-    padding-bottom: 20px;
+.carousel-buttons h1 {
+    color: white; 
+    font-family: 'Droid serif', serif; 
+    font-size: 70px; 
+    font-weight: 400; 
+    font-style: italic; 
+    line-height: 44px; 
+    margin: 0 0 12px; 
+    text-align: center;
+    padding-bottom: 10px;
 }
 
 .navbar {
@@ -29,7 +36,10 @@ h1 {
 
 .carousel-item img {
     border-radius: 0 0 10px 10px;
-    filter: blur(3px);
+    filter: blur(1.5px);
+    width: 100vw;
+    height: 100vh;
+
 }
 .carousel-buttons { 
     display: flex;
@@ -42,6 +52,7 @@ h1 {
     right: 0;
     transform: translateY(-50%);
     text-align: center;
+    font-family: 'Droid serif', serif; 
 }
 
 .carousel-buttons a.btn {
@@ -58,6 +69,92 @@ h1 {
     width: 25%;
 }
 
+.underbody {
+    background-color: white;
+    position: relative;
+    z-index: 1;
+    width: 65vw;
+    border-radius: 0px 10px 10px 0px;
+    opacity: 0.78;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.featuresInfo {
+    padding: 10px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: -300px;
+};
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 400px;
+    position: relative;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, 
+                rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                rgba(0, 0, 0, 0.12) 0px 4px 6px,
+                rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+                rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    z-index: 2;
+}
+
+.image img {
+    width: 100%;
+    height: 260px;
+    display: block;
+    margin:auto;
+    border-radius: 4px;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: 0.6s;
+}
+
+.content:hover {
+    opacity: 1;
+    border-radius: 4px;
+}
+
+.content h1 {
+    font-size: 45px;
+    color: #99a1ec;
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 20px;
+    color: #fff;
+    font-family: 'Droid serif', serif; 
+}
+
+.content > * {
+    transform: translateY(25px);
+    transition: transform 0.6s;
+}
+
+.content:hover > * {
+    transform: translateY(25px);
+    transition: transform 0.6s;
+}
 footer {
     width: 100%;
     position: relative;

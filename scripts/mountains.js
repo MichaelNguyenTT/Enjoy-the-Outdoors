@@ -55,7 +55,7 @@ function displayAllMountains() {
     <li class="list-group-item"><strong>Elevation:</strong> ${mountain.elevation}</li>
     <li class="list-group-item"><strong>Effort:</strong> <em>${mountain.effort}</em></li>
     <li class="list-group-item">
-    Latitude: ${mountain.coords.lat} Longitude: ${mountain.coords.lng}</li>
+    <strong>Latitude:</strong> ${mountain.coords.lat} <strong>Longitude:</strong> ${mountain.coords.lng}</li>
     </ul>
     </div>`
   })

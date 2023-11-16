@@ -5,12 +5,12 @@ window.onload = () => {
     const clearDisplay = document.getElementById('myParks');
     const clearParkList = document.getElementById('nationalParks')
     const searchType = document.getElementById('searchType');
+    const displayLocations = document.getElementById('stateSearch');
+    const displayParkType = document.getElementById('parkTypeSearch');
+    const displayNationalParks = document.getElementById('nationalParks');
 
     // onchange event for search type
     searchType.onchange = () => {
-        const displayLocations = document.getElementById('stateSearch');
-        const displayParkType = document.getElementById('parkTypeSearch');
-        const displayNationalParks = document.getElementById('nationalParks');
 
         displayLocations.style.display = 'none';
         displayParkType.style.display = 'none';
@@ -38,10 +38,8 @@ window.onload = () => {
     }
     const locationBtn = document.getElementById('locationBtn');
     locationBtn.onclick = () => {
-        if (locationBtn) {
-            locationBtn.scrollIntoView({ behavior: 'smooth'});
-            searchLocation();
-        }
+        searchLocation();
+
     }
 
     const parktypeList = document.getElementById('parktype')
@@ -52,10 +50,6 @@ window.onload = () => {
     }
     const parktypeBtn = document.getElementById('parktypeBtn');
     parktypeBtn.onclick = () => {
-
-        if (parktypeBtn) {
-            parktypeBtn.scrollIntoView({ behavior: 'smooth'})
-        }
         searchByParkType();
     }
 
@@ -123,7 +117,7 @@ function displaySelectedParkName() {
     const park = findPark();
 
     document.getElementById('myParks').innerHTML = `
-    <div class="card border shadow" style="width: 18rem; margin: 15px;">
+    <div class="card border shadow" style="width: 18rem; margin: 5px;">
     <div class="card-body">
     <h5 class="card-title"><strong> ${park.LocationName}</strong></h5>
     <p class="card-text"> ${park.Address}</p>
@@ -186,7 +180,7 @@ function searchByParkType() {
     const filteredParks = getParkNamesByType();
 
     //* Displays when search By Location button is clicked:
-    let message = `<h1 class="text-center mt-2" style="font-size: 1rem"><strong><em>${filteredParks.length} National Park to visit...</em></strong></h1><span><hr></span><br><br>`;
+    let message = `<h1 class="text-center mt-2" style="font-size: 1rem"><strong><em>${filteredParks.length} National Park to visit...</em></strong></h1><br><br>`;
     
     message += filteredParks.map(displayParks).join("");
     
@@ -197,7 +191,7 @@ function searchByParkType() {
 function searchLocation() {
     const filteredParks = parksOnStateSelect();
     //* Displays when search By Location button is clicked:
-    let message = `<h1 class="text-center mt-2" style="font-size: 1rem"><strong><em>${filteredParks.length} National Park to visit...</em></strong></h1><span><hr></span><br><br>`;
+    let message = `<h1 class="text-center mt-2" style="font-size: 1rem"><strong><em>${filteredParks.length} National Park to visit...</em></strong></h1><br><br>`;
   
     message += filteredParks.map(displayParks).join("");
   

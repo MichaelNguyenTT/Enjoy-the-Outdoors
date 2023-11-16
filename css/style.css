@@ -1,3 +1,7 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 body {
     margin: 0;
     padding: 0;
@@ -5,6 +9,7 @@ body {
     background: rgb(86,86,86);
     background: radial-gradient(circle, rgba(86,86,86,1) 0%, rgba(40,35,35,0.5886729691876751) 54%);
 }
+
 
 .navbar {
     background: rgb(86,86,86);
@@ -33,7 +38,7 @@ body {
 
 .centered-content {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(255, 255, 255, 0.8); 
@@ -87,6 +92,17 @@ body {
   transform: translateY(2px);
 }
 
+#myParks {
+  margin-top: -400px;
+  z-index: 1;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: rgb(181, 177, 177);
+  opacity: 0.82;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
 .card {
   transition: all 0.2s ease;
   cursor: pointer;
@@ -94,7 +110,7 @@ body {
 
 .card:hover {
   box-shadow: 5px 6px 2px #e9ecef;
-  transform: scale(1.1);
+  transform: scale(0.9);
 }
 
 .footercontainer {
