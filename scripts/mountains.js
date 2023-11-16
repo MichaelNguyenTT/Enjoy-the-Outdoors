@@ -1,29 +1,25 @@
 'use strict'
 
 window.onload = () => {
-
-  displayMountainInfo();
+  displayAllMountains();
+  loadMountainList();
+  
   const displayBtn = document.getElementById('displayMountainsBtn');
   displayBtn.onclick = () => {
     displayMountainInfo();
   }
-
+    
   const onMountainSelect = document.getElementById('mountain');
   onMountainSelect.onchange = () => {
     displayMountainInfo();
   }
-
-  const viewAllBtn = document.getElementById('viewAllMountains');
-  viewAllBtn.onclick = () => {
-    displayAllMountains();
-  }
-
-    loadMountainList();
 }
-
 
 function loadMountainList() {
   const mountainSelect = document.getElementById('mountain');
+
+  const preSelect = document.getElementById('mountain');
+  preSelect.appendChild(new Option('Choose A Mountain..', null));
 
   mountainsArray.forEach((item) => {
     let mountainOptions = new Option(item.name, item.name);
@@ -66,29 +62,33 @@ function displayAllMountains() {
 
 
 function displayMountainInfo() {
-
+  const mountainValue = document.getElementById('mountain').value;
   const getMountain = getMountainInfo();
 
-  document.getElementById('mountains').innerHTML =
-  `
-  <div class="modal fade" id="mountainModal" tabindex="-1" aria-labelledby="mountainModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-    <img src="/images/${getMountain.img}" class="card-img-top" alt="...">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="mountainModalLabel">${getMountain.name}</h1>
-      </div>
-      <div class="modal-body">
-        <p>${getMountain.desc}</p>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Elevation:</strong> ${getMountain.elevation}</li>
-          <li class="list-group-item"><strong>Effort:</strong> <em>${getMountain.effort}</em></li>
-          <li class="list-group-item">
-          Latitude: ${getMountain.coords.lat} Longitude: ${getMountain.coords.lng}</li>
-        </ul>
+  if (mountainValue === null) {
+      return;
+  } else {
+    document.getElementById('mountains').innerHTML =
+    `
+    <div class="modal fade" id="mountainModal" tabindex="-1" aria-labelledby="mountainModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      <img src="/images/${getMountain.img}" class="card-img-top" alt="...">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="mountainModalLabel">${getMountain.name}</h1>
+        </div>
+        <div class="modal-body">
+          <p>${getMountain.desc}</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Elevation:</strong> ${getMountain.elevation}</li>
+            <li class="list-group-item"><strong>Effort:</strong> <em>${getMountain.effort}</em></li>
+            <li class="list-group-item">
+            Latitude: ${getMountain.coords.lat} Longitude: ${getMountain.coords.lng}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
-  `
+    `
+  }
 };

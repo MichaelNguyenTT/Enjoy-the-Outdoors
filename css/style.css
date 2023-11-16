@@ -33,17 +33,18 @@ body {
     height: 100vh;
     border-radius: 10px;
     filter: blur(2px);
-    
 }
 
 .centered-content {
     position: absolute;
-    top: 30%;
+    top: 26%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(255, 255, 255, 0.8); 
     padding: 20px;
     border-radius: 10px;
+    filter: drop-shadow(grey 1rem 1rem 10px);
+    z-index: 1;
 }
 
 .form-select {
@@ -93,14 +94,17 @@ body {
 }
 
 #myParks {
-  margin-top: -400px;
-  z-index: 1;
-  max-height: 400px;
+  margin-top: -450px;
+  margin-left: 10px;
+  margin-right: 10px;
+  max-height: 450px;
   overflow-y: auto;
   background-color: rgb(181, 177, 177);
-  opacity: 0.82;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  opacity: 0.8;
+  position: absolute;
+  z-index: 1;
 }
 
 .card {
@@ -110,7 +114,7 @@ body {
 
 .card:hover {
   box-shadow: 5px 6px 2px #e9ecef;
-  transform: scale(0.9);
+  transform: scale(1.1);
 }
 
 .footercontainer {
