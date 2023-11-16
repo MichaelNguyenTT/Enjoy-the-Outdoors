@@ -17,12 +17,6 @@ window.onload = () => {
         
         clearDisplay.innerHTML = '';
         
-        const preSelectLocation = document.getElementById('states');
-        preSelectLocation.appendChild(new Option('Choose A Location', ''))
-    
-        const preSelectParkType = document.getElementById('parktype');
-        preSelectParkType.appendChild(new Option('Choose Park Type', ''))
-
         // checks searchtype value to display location or park type dropdown 
         if (searchType.value === 'locations') {
             displayLocations.style.display = 'block';
@@ -44,14 +38,12 @@ window.onload = () => {
     }
     const locationBtn = document.getElementById('locationBtn');
     locationBtn.onclick = () => {
-
         if (locationBtn) {
             locationBtn.scrollIntoView({ behavior: 'smooth'});
             searchLocation();
         }
     }
 
-    
     const parktypeList = document.getElementById('parktype')
     parktypeList.onchange = () => {
         clearParkList.innerHTML = '';
@@ -65,6 +57,12 @@ window.onload = () => {
             parktypeBtn.scrollIntoView({ behavior: 'smooth'})
         }
         searchByParkType();
+    }
+
+    const parkNames = document.getElementById('nationalParks');
+    parkNames.onchange = () => {
+        clearDisplay.innerHTML = ''
+        displaySelectedParkName();
     }
 
     //load nationalparks
@@ -112,6 +110,31 @@ function addNationalParkDropdown() {
 }
 // ** END OF LOADING ** //
 
+function findPark() {
+    const selectedParkName = document.getElementById('nationalParks').value;
+
+    const foundParkName = nationalParksArray.find((mountain) => mountain.State.includes(selectedParkName));
+
+    return foundParkName;
+}
+
+function displaySelectedParkName() {
+
+    const park = findPark();
+
+    document.getElementById('myParks').innerHTML = `
+    <div class="card border shadow" style="width: 18rem; margin: 15px;">
+    <div class="card-body">
+    <h5 class="card-title"><strong> ${park.LocationName}</strong></h5>
+    <p class="card-text"> ${park.Address}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>City:</strong> ${park.City}</li>
+    <li class="list-group-item"><strong>State:</strong> ${park.State}</li>
+    <li class="list-group-item"><strong>Phone:</strong> ${park.Phone}</li>
+    </ul>
+</div>`
+}
 
 function parksOnStateSelect() {
 
@@ -163,7 +186,7 @@ function searchByParkType() {
     const filteredParks = getParkNamesByType();
 
     //* Displays when search By Location button is clicked:
-    let message = `${filteredParks.length} National Park to visit</h1><br><br>`;
+    let message = `<h1 class="text-center mt-2" style="font-size: 1rem"><strong><em>${filteredParks.length} National Park to visit...</em></strong></h1><span><hr></span><br><br>`;
     
     message += filteredParks.map(displayParks).join("");
     
@@ -197,3 +220,4 @@ function searchLocation() {
 `;
 
 }
+
