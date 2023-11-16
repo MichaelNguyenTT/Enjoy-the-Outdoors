@@ -214,7 +214,8 @@ function searchLocation() {
         <ul class="list-group list-group-flush">
         <li class="list-group-item"><strong>City:</strong> ${park.City}</li>
         <li class="list-group-item"><strong>State:</strong> ${park.State}</li>
-        <li class="list-group-item"><strong>Phone:</strong> ${park.Phone}</li>
+        <li class="list-group-item"><strong>Latitude</strong> ${park.Latitude}</li>
+        <li class="list-group-item"><strong>Longitude</strong> ${park.Longitude}</li>
         </ul>
     </div>
 `;

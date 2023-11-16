@@ -59,5 +59,9 @@ h1 {
 }
 
 footer {
-    opacity: 0.8;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    opacity: 0.7;
 }
+  

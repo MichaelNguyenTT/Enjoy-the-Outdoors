@@ -3,7 +3,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background: rgb(86,86,86);
-    background: radial-gradient(circle, rgba(86,86,86,1) 0%, rgba(40,35,35,0) 100%);
+    background: radial-gradient(circle, rgba(86,86,86,1) 0%, rgba(40,35,35,0.5886729691876751) 54%);
 }
 
 .navbar {
@@ -25,8 +25,10 @@ body {
 .banner img {
     max-width: 100%;
     width: 100vw;
-    height: 80vh;
+    height: 100vh;
     border-radius: 10px;
+    filter: blur(2px);
+    
 }
 
 .centered-content {
