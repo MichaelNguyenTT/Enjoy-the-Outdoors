@@ -45,6 +45,7 @@ body {
     border-radius: 10px;
     z-index: 1;
     box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    width: 30vw;
 }
 
 .form-select {
@@ -78,9 +79,10 @@ body {
   white-space: nowrap;
   will-change: box-shadow,transform;
   text-align: center;
-  width: 15vw;
-  margin: 5px;
-  padding: 5px;
+  width: 20vw;
+  margin-left: 10px;
+  padding-bottom: 5px;
+  font-weight: bold;
 }
 
 
@@ -99,7 +101,7 @@ body {
 }
 
 #clearSearchBtn {
-  width: 5vw;
+  width: 10vw;
 }
 
 #myParks {
