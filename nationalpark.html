@@ -52,24 +52,29 @@
                 <!-- dropdown for location -->
                 <div id="stateSearch" class="search-section" style="display:none;">
                     <select id="states" class="form-select"></select>
-                    <button id="locationBtn" class="btn ">Search by Location</button>
+                    <button id="locationBtn" class="btn">Search by Location</button>
                 </div>
 
                 <!-- dropdown for park type -->
                 <div id="parkTypeSearch" class="search-section" style="display:none;">
                     <select id="parktype" class="form-select"></select>
-                    <button id="parktypeBtn" class="btn ">Search by Park Type</button>
+                    <button id="parktypeBtn" class="btn">Search by Park Type</button>
                 </div>
 
                 <!-- dropdown to load national park names -->
                 <div class="search-section">
                     <select id="nationalParks" class="form-select" style="display:none;"></select>
                 </div>
+
+                <div class="search-section">
+                  <button id="clearSearchBtn">Clear Filters</button>
+                </div>
             </div>
         </div>
         <!-- output to display park in cards -->
         <div class="container d-flex justify-content-center flex-wrap">
-            <div id="myParks" class="row justify-content-center flex-wrap"></div>
+          <div id="myParks" class="row justify-content-center flex-wrap">
+            </div>
         </div>
 </main>
   <div class="footercontainer">

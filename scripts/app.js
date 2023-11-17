@@ -4,10 +4,13 @@ window.onload = () => {
     //input variables
     const clearDisplay = document.getElementById('myParks');
     const clearParkList = document.getElementById('nationalParks')
+
     const searchType = document.getElementById('searchType');
+
     const displayLocations = document.getElementById('stateSearch');
     const displayParkType = document.getElementById('parkTypeSearch');
     const displayNationalParks = document.getElementById('nationalParks');
+
 
     // onchange event for search type
     searchType.onchange = () => {
@@ -20,24 +23,23 @@ window.onload = () => {
         // checks searchtype value to display location or park type dropdown 
         if (searchType.value === 'locations') {
             displayLocations.style.display = 'block';
-            displayNationalParks.style.display = 'block'
             addLocationsToDropdown();
         } else if (searchType.value === 'parkType') {
             displayParkType.style.display = 'block'
-            displayNationalParks.style.display = 'block'
             addParkTypesDropdown();
         }
     };
-    
     // onchange event everytime user picks a new state
     const locationList = document.getElementById('states');
     locationList.onchange = () => {
         clearParkList.innerHTML = '';
         clearDisplay.innerHTML = '';
-        updateParksOnLocationSelect();
+        displayNationalParks.style.display = 'none'
     }
     const locationBtn = document.getElementById('locationBtn');
     locationBtn.onclick = () => {
+        displayNationalParks.style.display = 'block'
+        updateParksOnLocationSelect();
         searchLocation();
 
     }
@@ -46,22 +48,46 @@ window.onload = () => {
     parktypeList.onchange = () => {
         clearParkList.innerHTML = '';
         clearDisplay.innerHTML = '';
-        updateParksOnTypeSelect();
+        displayNationalParks.style.display = 'none'
     }
     const parktypeBtn = document.getElementById('parktypeBtn');
     parktypeBtn.onclick = () => {
+        displayNationalParks.style.display = 'block'
+        updateParksOnTypeSelect();
         searchByParkType();
     }
 
-    const parkNames = document.getElementById('nationalParks');
-    parkNames.onchange = () => {
+    const onParkChange = document.getElementById('nationalParks');
+    onParkChange.onchange = () => {
         clearDisplay.innerHTML = ''
         displaySelectedParkName();
     }
 
-    //load nationalparks
-    addNationalParkDropdown();
+    const clearSearch = document.getElementById('clearSearchBtn');
+    clearSearch.onclick = () => {
+        clearAllFilters();
+    }
+
 };
+
+function clearAllFilters() {
+
+    const clearOutput = document.getElementById('myParks');
+    const clearParkList = document.getElementById('nationalParks')
+    const displayLocations = document.getElementById('stateSearch');
+    const displayParkType = document.getElementById('parkTypeSearch');
+    const displayNationalParks = document.getElementById('nationalParks');
+
+    clearOutput.innerHTML = ''; 
+    clearParkList.innerHTML = ''; 
+    displayLocations.style.display = 'none';
+    displayParkType.style.display = 'none';
+    displayNationalParks.style.display = 'none';
+
+    searchType.value = ''; 
+
+};
+
 // ** functions to load dropdowns ** //
 function addLocationsToDropdown() {
     // Get the dropdown element by its ID
@@ -91,44 +117,7 @@ function addParkTypesDropdown() {
     });
 };
 
-function addNationalParkDropdown() {
 
-    const nationalParkList = document.getElementById('nationalParks');
-
-    nationalParksArray.forEach(function (element) {
-
-        let optionParkNames = new Option(element.LocationName, element.State);
-
-        nationalParkList.appendChild(optionParkNames);
-    })
-}
-// ** END OF LOADING ** //
-
-function findPark() {
-    const selectedParkName = document.getElementById('nationalParks').value;
-
-    const foundParkName = nationalParksArray.find((mountain) => mountain.State.includes(selectedParkName));
-
-    return foundParkName;
-}
-
-function displaySelectedParkName() {
-
-    const park = findPark();
-
-    document.getElementById('myParks').innerHTML = `
-    <div class="card border shadow" style="width: 18rem; margin: 5px;">
-    <div class="card-body">
-    <h5 class="card-title"><strong> ${park.LocationName}</strong></h5>
-    <p class="card-text"> ${park.Address}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>City:</strong> ${park.City}</li>
-    <li class="list-group-item"><strong>State:</strong> ${park.State}</li>
-    <li class="list-group-item"><strong>Phone:</strong> ${park.Phone}</li>
-    </ul>
-</div>`
-}
 
 function parksOnStateSelect() {
 
@@ -149,7 +138,7 @@ function updateParksOnLocationSelect() {
     // appends a new option of every locationName
     filteredParks.forEach((element) => {
         if (stateSelectValue === element.State) {
-            let updatedOptions = new Option(element.LocationName, element.State)
+            let updatedOptions = new Option(element.LocationName, element.LocationName)
             nationalParksList.appendChild(updatedOptions);
         }
     })
@@ -157,9 +146,10 @@ function updateParksOnLocationSelect() {
 
 function getParkNamesByType() {
     const parktypeValue = document.getElementById('parktype').value;
-    const lowerParkType = parktypeValue.toLowerCase();
+    const lowerParkType = parktypeValue.toLowerCase()
  
     const newParkNames = nationalParksArray.filter((element) => element.LocationName.toLowerCase().includes(lowerParkType)); 
+
     return newParkNames;
 };
 
@@ -170,10 +160,11 @@ function updateParksOnTypeSelect() {
 
     parktypeNames.forEach((element) => {
 
-        let parkNameOptions = new Option(element.LocationName, element.State)
+        let parkNameOptions = new Option(element.LocationName, element.LocationName)
         nationalParksList.appendChild(parkNameOptions)
     })
 };
+
 
 function searchByParkType() {
 
@@ -197,6 +188,32 @@ function searchLocation() {
   
     document.getElementById("myParks").innerHTML = message;
   }
+
+function displaySelectedParkName() {
+
+    const getParkName = document.getElementById('nationalParks').value;
+
+    nationalParksArray.forEach((park) => {
+        if (park.LocationName === getParkName) {
+            document.getElementById('myParks').innerHTML = `
+            <div class="card border shadow" style="width: 18rem; margin: 5px;">
+            <div class="card-body">
+            <h5 class="card-title"><strong> ${park.LocationName}</strong></h5>
+            <p class="card-text"> ${park.Address}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>City:</strong> ${park.City}</li>
+            <li class="list-group-item"><strong>State:</strong> ${park.State}</li>
+            <li class="list-group-item"><strong>Latitude</strong> ${park.Latitude}</li>
+            <li class="list-group-item"><strong>Longitude</strong> ${park.Longitude}</li>
+            </ul>
+        </div>`
+        }
+        else {
+            return;
+        }
+    })
+}
   
   function displayParks(park) {
     return `

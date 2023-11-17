@@ -56,7 +56,7 @@ body {
 }
 
 /* Buttons */
-#locationBtn, #parktypeBtn {
+#locationBtn, #parktypeBtn, #clearSearchBtn {
   appearance: none;
   background-color: #FCFCFD;
   border-radius: 4px;
@@ -65,7 +65,7 @@ body {
   box-sizing: border-box;
   color: #36395A;
   cursor: pointer;
-  height: 48px;
+  height: 30px;
   justify-content: center;
   line-height: 1;
   list-style: none;
@@ -77,20 +77,29 @@ body {
   touch-action: manipulation;
   white-space: nowrap;
   will-change: box-shadow,transform;
+  text-align: center;
+  width: 15vw;
+  margin: 5px;
+  padding: 5px;
 }
 
-#locationBtn:focus, #parktypeBtn:focus {
+
+#locationBtn:focus, #parktypeBtn:focus, #clearSearchBtn:focus {
   box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
 }
 
-#locationBtn:hover, #parktypeBtn:hover {
+#locationBtn:hover, #parktypeBtn:hover, #clearSearchBtn:hover {
   box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
-#locationBtn:active, #parktypeBtn:active {
+#locationBtn:active, #parktypeBtn:active, #clearSearchBtn:active {
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
+}
+
+#clearSearchBtn {
+  width: 5vw;
 }
 
 #myParks {
