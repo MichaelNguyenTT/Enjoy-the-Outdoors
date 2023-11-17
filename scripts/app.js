@@ -158,6 +158,7 @@ function clearAllFilters() {
     const displayLocations = document.getElementById('stateSearch');
     const displayParkType = document.getElementById('parkTypeSearch');
     const displayNationalParks = document.getElementById('nationalParks');
+    const searchType = document.getElementById('searchType');
 
     clearOutput.innerHTML = ''; 
     clearParkList.innerHTML = ''; 
