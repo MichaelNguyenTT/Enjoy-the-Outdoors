@@ -1,15 +1,15 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Droid serif', serif; 
 }
+
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     background: rgb(86,86,86);
     background: radial-gradient(circle, rgba(86,86,86,1) 0%, rgba(40,35,35,0.5886729691876751) 54%);
 }
-
 
 .navbar {
     background: rgb(86,86,86);
@@ -43,8 +43,8 @@ body {
     background: rgba(255, 255, 255, 0.8); 
     padding: 20px;
     border-radius: 10px;
-    filter: drop-shadow(grey 1rem 1rem 10px);
     z-index: 1;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
 }
 
 .form-select {
