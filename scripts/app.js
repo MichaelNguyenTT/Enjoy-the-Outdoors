@@ -106,13 +106,13 @@ function addParkTypesDropdown() {
 function parksOnStateSelect() {
     
     const statesValue = document.getElementById('states').value;
-    // loops thru every element that includes to check if statesValue in object.State is true;
+    // loops thru every element using .include method to check if statesValue in key.State is true;
     const filteredParkData = nationalParksArray.filter((key) => key.State.includes(statesValue));
     
     return filteredParkData; // output: new array of objects that passed the condition
 }
 
-// function used to update available park names every time state changes
+// function used to update available park names when button is clicked
 function updateParksOnLocationSelect() {
     const stateSelectValue = document.getElementById('states').value;
     const nationalParksList = document.getElementById('nationalParks');
