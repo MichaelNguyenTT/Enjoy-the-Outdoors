@@ -150,7 +150,7 @@ function updateParksOnTypeSelect() {
     })
 };
 
-
+//* Clears all search fields when button is clicked
 function clearAllFilters() {
 
     const clearOutput = document.getElementById('myParks');
@@ -169,6 +169,7 @@ function clearAllFilters() {
 
 };
 
+//* this function is called when theres an onchange event for selecting a national park
 function displaySelectedParkName() {
 
     const getParkName = document.getElementById('nationalParks').value;
@@ -194,12 +195,12 @@ function displaySelectedParkName() {
         }
     })
 }
-  
+
+//* Calls this function when Park Type button is clicked
 function searchByParkType() {
     
     const filteredParks = getParkNamesByType();
     
-    //* Displays when search By Location button is clicked:
     let message = `<h1 class="text-center mt-2" style="font-size: 1rem"><strong><em>${filteredParks.length} National Park to visit...</em></strong></h1><br><br>`;
     
     message += filteredParks.map(displayParks).join("");
@@ -208,9 +209,10 @@ function searchByParkType() {
     
 }
 
+//* calls this function with location button is clicked
 function searchLocation() {
     const filteredParks = parksOnStateSelect();
-    //* Displays when search By Location button is clicked:
+
     let message = `<h1 class="text-center mt-2" style="font-size: 1rem"><strong><em>${filteredParks.length} National Park to visit...</em></strong></h1><br><br>`;
     
     message += filteredParks.map(displayParks).join("");
